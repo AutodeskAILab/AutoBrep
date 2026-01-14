@@ -38,7 +38,7 @@ Modify ```configs/sample.json``` for different sampling parameters.
 sh scripts/train.sh
 ```
 
-Download the [deduplicated ABC dataset]()
+Download the [deduplicated ABC-1M dataset](https://huggingface.co/datasets/SamGiantEagle/ABC-1M)
 
 Modify ```configs/autobrep.yaml``` with the path to ABC parquets and pretrained FSQ checkpoints.
 
