@@ -1,0 +1,47 @@
+seed_everything: True
+data:
+  class_path: autobrep.data.abc_data.ARDataModule
+  init_args:
+    data_root: /path/to/data/splits # replace with your data
+    batch_size: 4
+    limit_train: 10000000 
+    limit_val: 5000
+    prefetch_batches: 1
+    materialize: False
+    min_face: 2 
+    max_face: 200 
+    max_edge: 1000
+    max_seq: 3000
+    bit: 10
+    load_geom: False
+    geom_ratio: 0.0
+    geom_tokenizer: constraint
+    load_meta: True 
+    meta_ratio: 0.8
+    aug: True
+    uv_invariant: True
+    scaled_unique: True
+    surf_codebook_size: 1000
+    edge_codebook_size: 1000
+trainer:
+  log_every_n_steps: 10
+  max_epochs: 100
+  check_val_every_n_epoch: 2
+  profiler: simple
+  precision: bf16-mixed
+model:
+  class_path: autobrep.models.autoregressive.AutoBrepModel
+  init_args:
+    max_face: 200
+    max_seq: 3000
+    bit: 10
+    surf_codebook_size: 1000
+    edge_codebook_size: 1000
+    depth: 16
+    heads: 32
+    kv_groups: 8
+    dim: 2048
+    surf_fsq_ckpt: /path/to/surf-fsq.ckpt # replace with your ckpt 
+    edge_fsq_ckpt: /path/to/edge-fsq.ckpt # replace with your ckpt
+    lr: 0.0002
+    weight_decay: 0.05

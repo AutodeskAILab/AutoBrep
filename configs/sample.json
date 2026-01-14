@@ -1,0 +1,27 @@
+{
+    "api_version": {
+        "major_version": 1,
+        "minor_version": 0,
+        "build_number": 0
+    },
+    "seed": {
+        "use_seed": false,
+        "seed_value": 689447
+    },
+    "debug_mode": true,
+    "output_format": "step",
+    "hyper_parameters": {
+        "num_batches_to_sample": 10,
+        "batch_size": 8,
+        "complexity": "medium", 
+        "temperature": 1.0,
+        "sample_method": {
+            "name": "top_p",
+            "top_p_threshold": 0.9
+        },
+        "vertex_threshold": 0.002,
+        "sewing_tolerance": 0.002,
+        "z_threshold": 0
+    },
+    "weight_folder": "/autobrep/weight/folder"
+}
