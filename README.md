@@ -24,7 +24,7 @@ conda activate autobrep
 sh scripts/sample.sh
 ```
 
-Download the [pretrained checkpoints]()
+Download the [pretrained checkpoints](https://huggingface.co/SamGiantEagle/AutoBrep)
 
 Modify ```configs/sample.json``` for different sampling parameters. 
 
