@@ -1,0 +1,107 @@
+[build-system]
+requires = ["setuptools>=67.8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.urls]
+"Homepage" = "https://github.com/AutodeskAILab/AutoBrep"
+"Bug Tracker" = "https://github.com/AutodeskAILab/AutoBrep/issues"
+
+[project]
+name = "autobrep"
+version = "0.1.0"
+description = "AutoBrep: Autoregressive B-Rep Generation with Unified Topology and Geometry"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+# Add your essential (platform independent) dependencies here
+dependencies = [
+    "datasets",
+    "diffusers",
+    "jsonargparse[signatures]",
+    "matplotlib",
+    "networkx",
+    "numpy",
+    "occwl",
+    "omegaconf",
+    "pandas",
+    "plyfile",
+    "prettytable",
+    "pyarrow",
+    "pydeprecate",
+    "pydantic",
+    "pytorch-lightning == 2.2.5",
+    "wrapt_timeout_decorator == 1.5.1",
+    "s3fs",
+    "scikit-learn",
+    "smart-open",
+    "tabulate",
+    "torch",
+    "transformers",
+    "einops",
+    "x-transformers",
+    "trimesh"
+]
+
+[project.optional-dependencies]
+# Add your essential (platform dependent) dependencies here.
+# Note: please document if your consumers need to specifiy a particular
+# index URL to install these dependencies (such as pytorch's cuda index URL
+# "--extra-index-url https://download.pytorch.org/whl/cu118").
+dev = [
+    "isort",
+    "matplotlib",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "ruff==0.9.9",
+]
+
+data = [
+    "boto3",
+    "comet_ml",
+    "huggingface-hub",
+    "ray[all]",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "."
+testpaths = [ "tests" ]
+addopts = [
+    "--strict-markers"
+]
+asyncio_mode = "auto"
+markers = [
+    "skip_ci"
+]
+
+[tool.ruff]
+cache-dir = ".ruff-cache"
+src = ["src", "tests"]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 80
+line-ending = "lf"  # Use `\n` line endings for all files
+
+[tool.ruff.lint]
+# Sort imports
+extend-safe-fixes = ["I001"]
+# Lint isort codes
+extend-select = ["I"]
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore unused imports for convenience imports
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+known-local-folder = ["autobrep"]
+known-first-party = ["occwl"]
